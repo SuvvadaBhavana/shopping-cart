@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopLite</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <div class="logo"><span>◆</span> ShopLite</div>
+      <div class="nav-right">
+        <div class="search-box">
+          <i class="ti ti-search"></i>
+          <input type="text" id="search-input" placeholder="Search products..." oninput="filterProducts()">
+        </div>
+        <div class="cart-icon-btn">
+          <i class="ti ti-shopping-cart"></i>
+          Cart
+          <span class="cart-dot" id="nav-count" style="display:none">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <button class="filter-btn active" onclick="setFilter('All', this)">All</button>
+      <button class="filter-btn" onclick="setFilter('Audio', this)">Audio</button>
+      <button class="filter-btn" onclick="setFilter('Peripherals', this)">Peripherals</button>
+      <button class="filter-btn" onclick="setFilter('Accessories', this)">Accessories</button>
+      <button class="filter-btn" onclick="setFilter('Display', this)">Display</button>
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="layout">
+
+      <!-- LEFT: Products -->
+      <div>
+        <div class="section-hd">
+          <span class="section-title">Products</span>
+          <span class="item-count" id="item-count">8 items</span>
+        </div>
+        <div class="product-grid" id="product-grid"></div>
+      </div>
+
+      <!-- RIGHT: Cart -->
+      <div>
+        <div class="section-hd">
+          <span class="section-title">Your cart</span>
+        </div>
+        <div class="cart-panel">
+          <div class="cart-head">
+            <span class="cart-title">
+              <i class="ti ti-shopping-bag"></i>
+              Order summary
+              <span class="cart-count-badge" id="cart-count">0</span>
+            </span>
+            <button class="clear-btn" onclick="clearCart()">Clear all</button>
+          </div>
+          <div id="cart-body"></div>
+          <div class="cart-summary" id="cart-summary" style="display:none">
+            <div id="free-ship-bar"></div>
+            <div class="sum-row"><span>Subtotal</span><span id="sub">$0.00</span></div>
+            <div class="sum-row"><span>Shipping</span><span id="ship">$4.99</span></div>
+            <div class="sum-row discount" id="disc-row" style="display:none">
+              <span>Discount</span><span id="disc-val"></span>
+            </div>
+            <hr class="divider">
+            <div class="sum-total"><span>Total</span><span id="grand">$0.00</span></div>
+            <div class="promo-box">
+              <input type="text" id="promo-input" placeholder="Promo code (try SAVE10)">
+              <button class="promo-apply" onclick="applyPromo()">Apply</button>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">
+              <i class="ti ti-lock"></i> Secure checkout
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
